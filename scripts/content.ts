@@ -11,7 +11,7 @@ import { visit } from "unist-util-visit"
 
 import { Paths } from "@/lib/pageroutes"
 
-const docsDir = path.join(process.cwd(), "contents/docs")
+const docsDir = path.join(process.cwd(), "contents/blog")
 const outputDir = path.join(process.cwd(), "public", "search-data")
 
 interface MdxJsxFlowElement extends Node {
@@ -44,20 +44,20 @@ function createSlug(filePath: string): string {
 }
 
 function findDocumentBySlug(slug: string): Paths | null {
-  function searchDocs(docs: Paths[], currentPath = ""): Paths | null {
+  function searchBlog(docs: Paths[], currentPath = ""): Paths | null {
     for (const doc of docs) {
       if (isRoute(doc)) {
         const fullPath = currentPath + doc.href
         if (fullPath === slug) return doc
         if (doc.items) {
-          const found: Paths | null = searchDocs(doc.items, fullPath)
+          const found: Paths | null = searchBlog(doc.items, fullPath)
           if (found) return found
         }
       }
     }
     return null
   }
-  return searchDocs(Documents)
+  return searchBlog(Documents)
 }
 
 async function ensureDirectoryExists(dir: string) {

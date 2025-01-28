@@ -52,7 +52,7 @@ export default function Search() {
       if (isOpen && event.key === "Enter" && filteredResults.length > 2) {
         const selected = filteredResults[0]
         if ("href" in selected) {
-          window.location.href = `/docs${selected.href}`
+          window.location.href = `/blog${selected.href}`
           setIsOpen(false)
         }
       }
@@ -75,7 +75,7 @@ export default function Search() {
 
   function renderDocuments(
     documents: Document[],
-    parentHref: string = "/docs"
+    parentHref: string = "/blog"
   ): React.ReactNode[] {
     if (!documents || !Array.isArray(documents)) {
       return []
@@ -171,7 +171,7 @@ export default function Search() {
                             className={cn(
                               "p-3 flex flex-col max-w-[620px] gap-0.5 text-[15px] rounded-sm hover:bg-neutral-100 dark:hover:bg-neutral-900"
                             )}
-                            href={`/docs${item.href}`}
+                            href={`/blog${item.href}`}
                           >
                             <div className="flex items-center h-full gap-x-2">
                               <LuFileText className="h-[1.1rem] w-[1.1rem]" />

@@ -7,7 +7,7 @@ import remarkParse from "remark-parse";
 import remarkStringify from "remark-stringify";
 import { unified } from "unified";
 import { visit } from "unist-util-visit";
-const docsDir = path.join(process.cwd(), "contents/docs");
+const docsDir = path.join(process.cwd(), "contents/blog");
 const outputDir = path.join(process.cwd(), "public", "search-data");
 function isMdxJsxFlowElement(node) {
     return node.type === "mdxJsxFlowElement" && "name" in node;
@@ -28,14 +28,14 @@ function createSlug(filePath) {
     }
 }
 function findDocumentBySlug(slug) {
-    function searchDocs(docs, currentPath = "") {
+    function searchBlog(docs, currentPath = "") {
         for (const doc of docs) {
             if (isRoute(doc)) {
                 const fullPath = currentPath + doc.href;
                 if (fullPath === slug)
                     return doc;
                 if (doc.items) {
-                    const found = searchDocs(doc.items, fullPath);
+                    const found = searchBlog(doc.items, fullPath);
                     if (found)
                         return found;
                 }
@@ -43,7 +43,7 @@ function findDocumentBySlug(slug) {
         }
         return null;
     }
-    return searchDocs(Documents);
+    return searchBlog(Documents);
 }
 async function ensureDirectoryExists(dir) {
     try {

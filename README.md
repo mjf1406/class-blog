@@ -17,7 +17,7 @@
 
 ## Documentation
 
-[https://docs.rubixstudios.com.au](https://docs.rubixstudios.com.au) **(In-Development)**
+[https://blog.rubixstudios.com.au](https://blog.rubixstudios.com.au) **(In-Development)**
 
 ## Development
 
