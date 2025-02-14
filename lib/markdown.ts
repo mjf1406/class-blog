@@ -23,6 +23,12 @@ declare module "hast" {
 }
 
 type BaseMdxFrontmatter = {
+  coverImage: string
+  author: {
+    name: string
+    picture: string
+  }
+  date: string
   title: string
   description: string
   keywords: string

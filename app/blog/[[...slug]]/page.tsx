@@ -1,3 +1,4 @@
+import Image from "next/image"
 import { notFound } from "next/navigation"
 
 import { getDocument } from "@/lib/markdown"
@@ -29,9 +30,31 @@ export default async function Pages({ params }: PageProps) {
         <PageBreadcrumb paths={slug} />
         <Typography>
           <h1 className="text-3xl -mt-2">{frontmatter.title}</h1>
+          <div className="flex items-center">
+            <Image
+              src={frontmatter.author.picture}
+              width={48}
+              height={48}
+              className="w-12 h-12 rounded-full mr-4"
+              alt={frontmatter.author.name}
+            />
+            <div className="text-xl font-bold">{frontmatter.author.name}</div>
+          </div>
+          <h5 className="text-sm">
+            {new Date(frontmatter.date).toLocaleString()}
+          </h5>
           <p className="-mt-4 text-base text-muted-foreground text-[16.5px]">
             {frontmatter.description}
           </p>
+          <Image
+            src={frontmatter.coverImage}
+            alt={`Cover Image for ${frontmatter.title}`}
+            className={
+              "shadow-sm w-full hover:shadow-lg transition-shadow duration-200"
+            }
+            width={1300}
+            height={630}
+          />
           <div>{content}</div>
           <Pagination pathname={pathName} />
         </Typography>
