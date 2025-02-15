@@ -26,7 +26,7 @@ export default async function Pages({ params }: PageProps) {
 
   return (
     <div className="flex items-start gap-14">
-      <div className="flex-[3] pt-10">
+      <div className="flex-[3] items-center justify-center w-full mx-auto pt-10">
         <PageBreadcrumb paths={slug} />
         <Typography>
           <h1 className="text-3xl -mt-2">{frontmatter.title}</h1>
