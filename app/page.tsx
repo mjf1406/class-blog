@@ -17,7 +17,7 @@ export default function Home() {
           href={`/blog${PageRoutes[0].href}`}
           className={buttonVariants({ className: "px-6", size: "lg" })}
         >
-          Get Started
+          Read it up!
         </Link>
       </div>
     </div>
